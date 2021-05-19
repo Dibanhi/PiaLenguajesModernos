@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Iniciar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding ion-text-center">
+  <ion-grid *ngIf="isLoading">
+    <ion-row>
+      <ion-col size="12" size-sm="8" offset-sm="2">
+        <ion-spinner name="circular" color="primary"></ion-spinner>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <img class="image" src="../../../assets/adoptame.png"  *ngIf="!isLoading"/>
+  <form [formGroup]="iniciar"  *ngIf="!isLoading">
+    <ion-grid>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">E-Mail</ion-label>
+            <ion-input formControlName="email" type="email"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+         <ion-item>
+           <ion-label position="floating">Contraseña</ion-label>
+           <ion-input formControlName="contraseña" type="password"></ion-input>
+         </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-button color="primary" type="submit" expand="block" (click)="login()">Iniciar sesion</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+  <ion-button color="success" expand="block" fill="clear" shape="round"
+    routerLink="/login/registrar">Registrarme</ion-button>
+</ion-content>

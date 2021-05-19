@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/adoptame/app/home">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Respuestas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row *ngFor="let mensaje of mensajes">
+      <ion-col size="9" *ngIf="usuario !== mensaje.usuario" class="mensaje otro-mensaje">
+        <b>{{mensaje.usuario}}</b><br>
+        <span>{{mensaje.sms}}</span>
+      </ion-col>
+  
+      <ion-col offset="3" size="9" *ngIf="usuario === mensaje.usuario" class="mensaje mi-mensaje">
+        <b>{{mensaje.usuario}}</b><br>
+        <span>{{mensaje.sms}}</span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>
+
+<ion-footer padding>
+  <ion-item>
+    <ion-textarea [(ngModel)]="msg"></ion-textarea>
+    <ion-button (click)="sendMessage()">
+      <ion-icon name="send"></ion-icon>
+    </ion-button>
+  </ion-item>
+</ion-footer>

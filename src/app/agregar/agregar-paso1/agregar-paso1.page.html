@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button  routerLink="/adoptame/app/home">
+        <ion-icon name="arrow-back-outline" size="large" slot="start"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Agregar Mascota Paso1</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding ion-text-center">
+  <form [formGroup]="agregar">
+    <div class="picker">
+      <img class="image ion-text-center" *ngIf="selectedImage" (click)="getUrlFileImage()" src="{{selectedImage}}"/>
+      <ion-button color="primary" expand="block" fill="clear" shape="round" (click)="getUrlFileImage()" *ngIf="!selectedImage">
+        <ion-label>Subir foto</ion-label>
+      </ion-button>
+    </div>
+    <input type="file" accept="image/jpeg" #imageFile (change)="ImageUser($event)">
+    <ion-button *ngIf="seleccion && selectedImage" (click)="UrlImage()" expand="block"  shape="round" >Confirmar</ion-button>
+    <ion-grid>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Nombre de la Mascota</ion-label>
+            <ion-input formControlName="mascotaname" type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Descipcion</ion-label>
+            <ion-textarea rows="3" formControlName="descripcion"></ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-item>
+              <ion-label>La mascota es</ion-label>
+              <ion-select formControlName="tipoMascota">
+                <ion-select-option value="perro">Perro</ion-select-option>
+                <ion-select-option value="gato">Gato</ion-select-option>
+                <ion-select-option value="otros">Otros</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-item>
+              <ion-label>Motivo</ion-label>
+              <ion-select formControlName="motivo">
+                <ion-select-option value="enAdopcion">En adopcion</ion-select-option>
+                <ion-select-option value="perdido">Perdido</ion-select-option>
+                <ion-select-option value="encontrado">Encontrado</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-button color="success" type="submit" expand="block"(click)="irPaso2()">Siguiente</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

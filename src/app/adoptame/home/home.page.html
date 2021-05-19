@@ -1,0 +1,63 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-buttons slot="end">
+        <ion-button routerLink="/busqueda">
+          <ion-icon name="search-outline"></ion-icon>
+        </ion-button>
+        <ion-button routerLink="/ubicacion">
+          <ion-icon name="navigate-circle"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>
+        <img src="../../../assets/adoptame.png" alt="">
+        AdoptaMe
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+<ion-content class="ion-padding">
+  <ion-grid *ngIf="isLoading" class="ion-text-center">
+    <ion-row>
+      <ion-col size="12" size-sm="8" offset-sm="2">
+        <ion-spinner name="circular" color="primary"></ion-spinner>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!--<app-card-mascota mascota="{{item}}"></app-card-mascota>-->
+  <div *ngIf="!isLoading" >
+    <div class="cardMascota" *ngFor="let item of mascotasCargadas">
+    <div>
+      <ion-img [src]="item.mascotaUrl"></ion-img>
+    </div>
+    <div [routerLink]="['/', 'adoptame', 'app', 'home', mascotasCargadas[0].firebaseId]">
+      <ion-item>
+        <h2>{{item.nombreMascota}}</h2>
+      </ion-item>
+      <ion-item>
+        <ion-label>Descripcion</ion-label>
+        <h4>{{item.descripcion}}</h4>
+      </ion-item>
+      <ion-item>
+      <p>{{item.ubicacion.address}}</p>
+      </ion-item>
+    </div>
+    <ion-item>
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="6">
+            <ion-button expand="block" fill="clear" shape="round" (click)="interesan()">
+              <ion-icon name="heart-outline" *ngIf="!interes" ></ion-icon>
+              <ion-icon name="heart" *ngIf="interes" ></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button expand="block" fill="clear" shape="round" routerLink="/adoptar/paso-2">
+              <ion-icon name="chatbubble-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    </div>  
+  </div> 
+</ion-content>

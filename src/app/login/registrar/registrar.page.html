@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Registrar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding ion-text-center">
+    <form [formGroup]="registrar">
+      <div class="picker">
+        <img class="image ion-text-center" *ngIf="selectedImage" (click)="getUrlFileImage()" src="{{selectedImage}}"/>
+        <ion-button color="primary" expand="block" fill="clear" shape="round" (click)="getUrlFileImage()" *ngIf="!selectedImage">
+          <ion-label>Subir foto</ion-label>
+        </ion-button>
+      </div>
+      <input type="file" accept="image/jpeg" #imageFile (change)="ImageUser($event)">
+      <ion-button *ngIf="seleccion && selectedImage" (click)="UrlImage()" expand="block"  shape="round" >Confirmar</ion-button>
+      <ion-grid>
+        <ion-row>
+          <ion-col size-sm="6" offset-sm="3">
+            <ion-item>
+              <ion-label position="floating">Username</ion-label>
+              <ion-input formControlName="username" type="text"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-sm="6" offset-sm="3">
+            <ion-item>
+              <ion-label position="floating">E-Mail</ion-label>
+              <ion-input formControlName="email" type="email"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-sm="6" offset-sm="3">
+           <ion-item>
+             <ion-label position="floating">Contraseña</ion-label>
+             <ion-input formControlName="contraseña" type="password"></ion-input>
+           </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-sm="6" offset-sm="3">
+            <ion-item>
+              <ion-item>
+                <ion-label>Tipo de Cuenta</ion-label>
+                <ion-select formControlName="tipoCuenta">
+                  <ion-select-option value="usuario">usuario</ion-select-option>
+                  <ion-select-option value="institucion">institucion</ion-select-option>
+                </ion-select>
+              </ion-item>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-sm="3" offset-sm="3">
+            <app-seleccionar-ubicacion (ubicacionSelected)="onUbicacionSeleccionada($event)"></app-seleccionar-ubicacion>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-sm="6" offset-sm="3">
+            <ion-button color="success" type="submit" expand="block" (click)="addNewUser()" [disabled]="!registrar.valid">Registrar</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+    <ion-button color="primary" expand="block" fill="clear" shape="round"
+    routerLink="/login/iniciar">Iniciar sesion</ion-button>
+</ion-content>

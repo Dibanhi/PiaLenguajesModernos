@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="regresarPaso3()">
+        <ion-icon name="arrow-back-outline" size="large" slot="start"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Agregar Mascota Paso 4</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-text-center ion-padding">
+  <h2>¿Esta seguro de publicar esta mascota?</h2>
+  <ion-button color="success" type="submit" expand="block" (click)="publicarMascota()"
+  routerLink="/adoptame/app/home">Publicar</ion-button>
+</ion-content>

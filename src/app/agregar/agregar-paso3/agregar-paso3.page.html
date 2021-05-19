@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="regresarPaso2()">
+        <ion-icon name="arrow-back-outline" size="large" slot="start"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Agregar Mascota Paso 3</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding ion-text-center">
+  <form [formGroup]="agregar3">
+    <h2>Fije la ubicacion donde mascota vivivira temporalmente</h2>
+    <ion-grid>
+      <ion-row>
+        <ion-col size-sm="3" offset-sm="3">
+          <app-seleccionar-ubicacion (ubicacionSelected)="onUbicacionSeleccionada($event)"></app-seleccionar-ubicacion>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+  <ion-button color="success" type="submit" expand="block" (click)="irAPaso4()">Siguiente</ion-button>
+</ion-content>
+

@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button  routerLink="/adoptame/app/home">
+        <ion-icon name="arrow-back-outline" size="large" slot="start"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="isLoading" >
+    <ion-spinner name="circular" color="primary"></ion-spinner>
+  </div>
+  <ion-grid *ngIf="!isLoading">
+    <ion-row>
+      <ion-col size-sm="6" offset-sm="3">
+        <ion-img [src]="mascotaActual.mascotaUrl"></ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm="6" offset-sm="3">
+        <h3>{{mascotaActual.nombreMascota}}</h3>
+      </ion-col>
+    </ion-row>
+    <h4>Descripcion</h4>
+    <ion-row>
+      <ion-col size-sm="6" offset-sm="3">
+        <p>{{mascotaActual.descripcion}}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-text-center">
+      <ion-col size-sm="6" offset-sm="3">
+        <h4>Tipo</h4>
+        <h5>{{mascotaActual.tipoMascota}}</h5>
+      </ion-col>
+      <ion-col size-sm="6" offset-sm="3">
+        <h4>Motivo</h4>
+        <h5>{{mascotaActual.motivo}}</h5>
+      </ion-col>
+    </ion-row>
+    <h4>Ubicado en</h4>
+    <ion-row>
+      <ion-col size-sm="6" offset-sm="3">
+        <p>{{mascotaActual.ubicacion.address}}</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div class="ion-text-center">
+    <h3>Contacta a</h3>
+  </div>
+  <ion-grid *ngIf="!isLoading">
+    <ion-row>
+      <ion-col size-sm="6" offset-sm="3">
+        <h5>Nombre</h5>
+        <p>{{mascotaActual.nombre}}</p>
+      </ion-col>
+      <ion-col size-sm="6" offset-sm="3">
+        <h5>Email</h5>
+        <p>{{mascotaActual.email}}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm="6" offset-sm="3">
+        <h4>Telefono</h4>
+        <p>{{mascotaActual.telefono}}</p>
+      </ion-col>
+      <ion-col size-sm="6" offset-sm="3">
+        <h4>Celular</h4>
+        <p>{{mascotaActual.celular}}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm="6" offset-sm="3">
+        <h4>Sitio web</h4>
+        <p>{{mascotaActual.web}}</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

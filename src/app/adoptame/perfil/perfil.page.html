@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div>
+    <div>
+      <ion-img [src]="usuarioActual.imageUrl"></ion-img>
+    </div>
+    <ion-item>
+      <h2>{{usuarioActual.username}}</h2>
+    </ion-item>
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <h4>{{usuarioActual.email}}</h4>
+    </ion-item>
+    <ion-item>
+      <ion-label>Direccion</ion-label>
+    <p>{{usuarioActual.ubicacion.address}}</p>
+    </ion-item>
+  </div> 
+
+  <ion-button (click)="onLogout()" expand="block" fill="clear" shape="round">
+    <ion-icon name="log-out-outline"></ion-icon>
+    Cerrar sesion
+  </ion-button>
+</ion-content>
